@@ -13,7 +13,7 @@ namespace CoreDemo.ViewComponents.Writer
         Message2Manager mm = new Message2Manager(new EfMessage2Repository());
         public IViewComponentResult Invoke()
         {
-            int id = 2;
+            int id=2;
             var values = mm.GetInboxListByWriter(id);
 
             return View(values);
