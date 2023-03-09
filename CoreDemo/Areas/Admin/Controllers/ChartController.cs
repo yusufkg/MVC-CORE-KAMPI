@@ -1,4 +1,5 @@
 ﻿using CoreDemo.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 namespace CoreDemo.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AllowAnonymous]
     public class ChartController : Controller
     {
         public IActionResult Index()
@@ -27,11 +29,18 @@ namespace CoreDemo.Areas.Admin.Controllers
             {
                 categoryname = "Yazılım",
                 categorycount = 15
-            }); list.Add(new CategoryClass
+            }); 
+            list.Add(new CategoryClass
             {
                 categoryname = "Spor",
                 categorycount = 14
             });
+            list.Add(new CategoryClass
+            {
+                categoryname = "Sinema",
+                categorycount = 2
+            });
+
             return Json(new { jsonlist=list});
         }
     }
